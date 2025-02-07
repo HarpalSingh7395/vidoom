@@ -29,7 +29,7 @@ const navLinks: NavLink[] = [
 
 export default function Sidebar() {
     return (
-        <div className='max-lg:hidden  w-64 border-r bg-card h-screen px-4 pt-11 flex flex-col space-y-2'>
+        <div className='sticky top-0 left-0 max-lg:hidden  w-64 border-r bg-card h-screen px-4 pt-24 flex flex-col space-y-2'>
             {navLinks.map(item => (<NavItem key={item.name} item={item} />))}
         </div>
     )

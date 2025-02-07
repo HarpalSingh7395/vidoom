@@ -1,23 +1,18 @@
 import Navbar from '@/components/Navbar'
 import Sidebar from '@/components/sidebar/Sidebar'
-import {
-    ClerkProvider,
-} from '@clerk/nextjs'
 
 export default function layout({ children }: { children: React.ReactNode }) {
     return (
-        <ClerkProvider>
-            <div className='h-screen w-full flex-col overflow-hidden'>
-                <Navbar />
-                <div className='flex size-full'>
-                    <div>
-                        <Sidebar />
-                    </div>
-                    <div className="flex-1">
-                        {children}
-                    </div>
+        <div className='h-screen w-full flex-col overflow-hidden'>
+            <Navbar />
+            <div className='flex size-full'>
+                <div>
+                    <Sidebar />
+                </div>
+                <div className="flex-1 pt-24 px-20 h-screen w-full max-w-7xl mx-auto">
+                    {children}
                 </div>
             </div>
-        </ClerkProvider>
+        </div>
     )
 }
