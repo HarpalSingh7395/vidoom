@@ -5,7 +5,7 @@ export const useGetCallById = (id: string | string[]) => {
     const [call, setCall] = useState<Call>();
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const client = useStreamVideoClient();
-
+console.log({client})
     const fetchCall = useCallback(async () => {
         const result = await client?.queryCalls({
             filter_conditions: {

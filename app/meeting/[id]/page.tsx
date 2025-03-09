@@ -1,8 +1,10 @@
 'use client'
+import MeetingRoom from '@/components/MeetingRoom'
+import MeetingSetup from '@/components/MeetingSetup'
 import Spinner from '@/components/Spinner'
 import { useGetCallById } from '@/hooks/useGetCallById'
 import { useUser } from '@clerk/nextjs'
-import { CallControls, SpeakerLayout, StreamCall, StreamTheme } from '@stream-io/video-react-sdk'
+import { CallControls, SpeakerLayout, StreamCall, StreamCallProvider, StreamTheme } from '@stream-io/video-react-sdk'
 import React, { use, useState } from 'react'
 
 export default function Meeting({ params }: { params: { id: string } }) {
@@ -13,20 +15,18 @@ export default function Meeting({ params }: { params: { id: string } }) {
     const { call, isLoading: isLoadingCall } = useGetCallById(id);
 
 
-    if(!isLoaded || isLoadingCall) return <Spinner />;
+    if (!isLoaded || isLoadingCall) return <Spinner />;
 
-    
+
     return (
-        <main className='h-screen w-full'>
-            <StreamCall call={call}>
-                <StreamTheme>
-                    {isReady ?
-                        "Ready"
-                        :
-                        'Not Ready'
-                    }
-                </StreamTheme>
-            </StreamCall>
-        </main>
+        <StreamCall call={call}>
+            <StreamTheme>
+                {isReady ?
+                    <MeetingRoom />
+                    :
+                    <MeetingSetup onComplete={setIsReady} />
+                }
+            </StreamTheme>
+        </StreamCall>
     )
 }

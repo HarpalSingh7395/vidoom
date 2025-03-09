@@ -1,5 +1,8 @@
+'use client'
 import Navbar from '@/components/Navbar'
 import Sidebar from '@/components/sidebar/Sidebar'
+import { StreamClientProvider } from '@/providers/StreamClientProvider'
+import "@stream-io/video-react-sdk/dist/css/style.css";
 
 export default function layout({ children }: { children: React.ReactNode }) {
     return (
@@ -10,7 +13,9 @@ export default function layout({ children }: { children: React.ReactNode }) {
                     <Sidebar />
                 </div>
                 <div className="flex-1 pt-24 px-20 h-screen w-full max-w-7xl mx-auto">
-                    {children}
+                    <StreamClientProvider>
+                        {children}
+                    </StreamClientProvider>
                 </div>
             </div>
         </div>
