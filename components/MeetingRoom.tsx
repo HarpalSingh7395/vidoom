@@ -25,6 +25,9 @@ export default function MeetingRoom() {
         <div className='relative h-screen w-full overflow-hidden text-white'>
             <div className='size-full flex justify-center items-center'>
                 <CallLayout />
+                <div className='fixed bottom-0'>
+                    <CallControls />
+                </div>
             </div>
         </div>
     )

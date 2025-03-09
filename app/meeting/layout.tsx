@@ -1,5 +1,5 @@
 import { StreamClientProvider } from '@/providers/StreamClientProvider'
-import React from 'react'
+import "@stream-io/video-react-sdk/dist/css/styles.css";
 
 export default function layout({ children }: { children: React.ReactNode }) {
     return (
