@@ -2,7 +2,6 @@ import React from 'react'
 import { Brand } from './icons'
 import {
     SignInButton,
-    SignUpButton,
     SignedIn,
     SignedOut,
     UserButton,

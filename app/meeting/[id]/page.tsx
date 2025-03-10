@@ -4,12 +4,14 @@ import MeetingSetup from '@/components/MeetingSetup'
 import Spinner from '@/components/Spinner'
 import { useGetCallById } from '@/hooks/useGetCallById'
 import { useUser } from '@clerk/nextjs'
-import { CallControls, SpeakerLayout, StreamCall, StreamCallProvider, StreamTheme } from '@stream-io/video-react-sdk'
-import React, { use, useState } from 'react'
+import { StreamCall, StreamTheme } from '@stream-io/video-react-sdk'
+import { useParams } from 'next/navigation'
+import React, { useState } from 'react'
 
-export default function Meeting({ params }: { params: { id: string } }) {
-    const { id } = use<{ id: string }>(params)
-    const { user, isLoaded } = useUser();
+export default function Meeting() {
+    const params = useParams();
+    const id = params.id as string;
+    const { isLoaded } = useUser();
     const [isReady, setIsReady] = useState<boolean>(false);
 
     const { call, isLoading: isLoadingCall } = useGetCallById(id);

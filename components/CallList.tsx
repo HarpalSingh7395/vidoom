@@ -2,7 +2,6 @@
 import { useGetCalls } from '@/hooks/useGetCalls'
 import React, { useEffect, useState } from 'react'
 import Spinner from './Spinner';
-import { useRouter } from 'next/navigation';
 import { CallRecording } from '@stream-io/node-sdk';
 import { Call } from '@stream-io/video-react-sdk';
 import CallCard from './CallCard';
@@ -14,8 +13,6 @@ type CallListProps = {
 export default function CallList({ type }: CallListProps) {
     const { endedCalls, upcomingCalls, callRecordings, isLoading } = useGetCalls();
     const [recordings, setRecordings] = useState<CallRecording[]>([]);
-    const router = useRouter();
-
 
     const getCalls = () => {
         switch (type) {
@@ -54,7 +51,7 @@ export default function CallList({ type }: CallListProps) {
                 const recordings = callData.filter(call => call.recordings.length > 0)
                     .flatMap(call => call.recordings)
                 console.log({ recordings })
-                setRecordings(recordings)
+                setRecordings(recordings as unknown as CallRecording[])
             } catch (error) {
                 console.log(error)
             }

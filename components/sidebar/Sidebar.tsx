@@ -1,5 +1,5 @@
 import React from 'react'
-import { Calendar, Video, Settings, LayoutDashboard, CalendarArrowDown, CalendarArrowUp } from "lucide-react";
+import { Video, LayoutDashboard, CalendarArrowDown, CalendarArrowUp } from "lucide-react";
 import NavItem, { NavLink } from './SidebarItem';
 
 const navLinks: NavLink[] = [

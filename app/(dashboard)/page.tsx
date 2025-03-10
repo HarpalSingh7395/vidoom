@@ -1,6 +1,5 @@
 import MeetingTypeList from "@/components/MeetingTypeList";
 import { Badge } from "@/components/ui/badge";
-import Image from "next/image";
 
 
 export default function Dashboard() {

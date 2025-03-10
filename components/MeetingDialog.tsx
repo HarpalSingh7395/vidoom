@@ -1,14 +1,11 @@
-import { Button } from "@/components/ui/button"
 import {
   Dialog,
   DialogContent,
   DialogDescription,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog"
 import { ReactNode } from "react";
-import { CardContent } from "./ui/card";
 
 type MeetingDialogProps = {
   isOpen?: boolean;
@@ -19,7 +16,7 @@ type MeetingDialogProps = {
   children?: ReactNode;
 }
 
-export function MeetingDialog({ title, description, isOpen, onClose, onActionClick, children }: MeetingDialogProps) {
+export function MeetingDialog({ title, description, isOpen, onClose, children }: MeetingDialogProps) {
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="sm:max-w-[425px]">

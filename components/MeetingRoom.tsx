@@ -1,7 +1,7 @@
-import { CallControls, CallingState, CallParticipantsList, CallStats, CallStatsButton, PaginatedGridLayout, SpeakerLayout, useCallStateHooks } from '@stream-io/video-react-sdk'
+import { CallControls, CallingState, CallParticipantsList, CallStatsButton, PaginatedGridLayout, SpeakerLayout, useCallStateHooks } from '@stream-io/video-react-sdk'
 import React, { useState } from 'react'
 import { Button, buttonVariants } from './ui/button';
-import { Layout, LayoutGrid, Users } from 'lucide-react';
+import { LayoutGrid, Users } from 'lucide-react';
 import {
     DropdownMenu,
     DropdownMenuContent,

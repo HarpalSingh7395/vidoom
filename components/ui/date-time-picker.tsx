@@ -36,7 +36,7 @@ export const DateTimePicker = forwardRef<HTMLButtonElement, DateTimePickerProps>
       } else if (!value && date) {
         setDate(undefined);
       }
-    }, [value]);
+    }, [date, value]);
 
     // Only call onChange when date is updated internally (not from props)
     const handleDateChange = (newDate: Date | undefined) => {
