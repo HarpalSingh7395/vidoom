@@ -69,8 +69,6 @@ export default function CallList({ type }: CallListProps) {
             {calls && calls.length > 0 ?
         calls.map((call: Call | CallRecording, index) => {
             const isCallRecording = (item: Call | CallRecording): item is CallRecording => {
-                // Add a property that distinguishes CallRecording from Call
-                // This is an example - use the actual property that differentiates these types
                 return 'filename' in item;
             };
             if(isCallRecording(call)) {
