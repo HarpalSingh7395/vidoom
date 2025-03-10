@@ -1,5 +1,5 @@
 import React from 'react'
-import { Calendar, Video, Settings, LayoutDashboard } from "lucide-react";
+import { Calendar, Video, Settings, LayoutDashboard, CalendarArrowDown, CalendarArrowUp } from "lucide-react";
 import NavItem, { NavLink } from './SidebarItem';
 
 const navLinks: NavLink[] = [
@@ -11,7 +11,12 @@ const navLinks: NavLink[] = [
     {
         name: "Scheduled",
         link: "/scheduled",
-        icon: <Calendar size={20} />,
+        icon: <CalendarArrowUp size={20} />,
+    },
+    {
+        name: "Previous",
+        link: "/previous",
+        icon: <CalendarArrowDown size={20} />,
     },
     {
         name: "Recordings",
