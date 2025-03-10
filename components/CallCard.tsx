@@ -3,6 +3,7 @@ import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from './ui/c
 import { Button } from './ui/button'
 import { useRouter } from 'next/navigation';
 import { toast } from "sonner"
+import { Calendar, CheckCircle, Copy, Play, Video } from 'lucide-react';
 
 type CallCardProps = {
     title: string;
@@ -18,24 +19,43 @@ export default function CallCard({ title, date, link, type }: CallCardProps) {
     }
 
     const onCopyLink = () => {
-        if(!link) return;
+        if (!link) return;
         navigator.clipboard.writeText(link)
         toast("Link has been copied.")
+    }
+
+    const getIcon = () => {
+        switch (type) {
+            case 'ended':
+                return <CheckCircle className='w-5 h-5' />;
+
+            case 'recordings':
+                return <Video className='w-5 h-5' />;
+
+            case 'upcoming':
+                return <Calendar className='w-5 h-5' />
+
+            default:
+                return <Video className='w-5 h-5' />
+        }
     }
 
     return (
         <Card>
             <CardHeader>
-                <CardTitle>{title || "Not title"}</CardTitle>
+                <div className='flex gap-2 items-center'>{getIcon()}<CardTitle>{title || "Not title"}</CardTitle></div>
                 <CardDescription>{date}</CardDescription>
             </CardHeader>
             <CardFooter>
-                {type == "upcoming" && <div className='flex justify-end items-center gap-2 w-full'>
-                    <Button onClick={onStartMeeting}>
-                        Start
-                    </Button>
-                    <Button className='' variant={'secondary'} onClick={onCopyLink}>
-                        Copy Invitation Link
+                {(type == "upcoming" || type == "recordings") && <div className='flex justify-end items-center gap-2 w-full'>
+                    {type == "upcoming" && <Button size={'sm'} onClick={onStartMeeting}>
+                        <Play />Start
+                    </Button>}
+                    {type == "recordings" && <Button size={'sm'} onClick={onStartMeeting}>
+                        <Play />Play
+                    </Button>}
+                    <Button size={'sm'} className='' variant={'secondary'} onClick={onCopyLink}>
+                        <Copy />Copy Invitation Link
                     </Button>
                 </div>}
             </CardFooter>

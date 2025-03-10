@@ -18,6 +18,13 @@ export const useGetCalls = () => {
                     field: "starts_at",
                     direction: -1
                 }],
+                filter_conditions: {
+                    starts_at: { $exists: true },
+                    $or: [
+                        { created_by_user_id: user.id },
+                        { members: { $in: [user.id] } }
+                    ]
+                }
             }); 
             setCalls(calls)
         } catch (error) {

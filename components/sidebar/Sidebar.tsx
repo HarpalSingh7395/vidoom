@@ -23,11 +23,11 @@ const navLinks: NavLink[] = [
         link: "/recordings",
         icon: <Video size={20} />,
     },
-    {
-        name: "Settings",
-        link: "/settings",
-        icon: <Settings size={20} />,
-    },
+    // {
+    //     name: "Settings",
+    //     link: "/settings",
+    //     icon: <Settings size={20} />,
+    // },
 ];
 
 

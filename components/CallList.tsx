@@ -25,6 +25,8 @@ export default function CallList({ type }: CallListProps) {
             case 'upcoming':
                 return upcomingCalls
 
+            case 'recordings':
+                return recordings
             default:
                 return [];
         }
@@ -67,9 +69,32 @@ export default function CallList({ type }: CallListProps) {
     if (isLoading) return <Spinner />
     return (
         <div className='grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-4'>
-            {calls && calls.length > 0 ? calls.map((call: Call) =>
-                <CallCard date={(call as Call).state.startsAt?.toLocaleString()} link={(process.env.NEXT_PUBLIS_APP_URL || window.location.origin) + "/meeting/" + (call as Call).id} type={type} key={(call as Call).id} title={(call as Call).state.custom.name} />
-            ) : <p>{noCallsMessage}</p>}
+            {calls && calls.length > 0 ?
+        calls.map((call: Call | CallRecording, index) => {
+            const isCallRecording = (item: Call | CallRecording): item is CallRecording => {
+                // Add a property that distinguishes CallRecording from Call
+                // This is an example - use the actual property that differentiates these types
+                return 'filename' in item;
+            };
+            if(isCallRecording(call)) {
+                console.log({call})
+                return <CallCard 
+                    date={`${new Date((call as CallRecording).start_time).toLocaleString()} - ${new Date((call as CallRecording).end_time).toLocaleString()}`} 
+                    link={(call as CallRecording).url} 
+                    type={type} 
+                    key={(call as CallRecording).filename} 
+                    title={`Recording ${index}`} 
+                />
+            }
+            return <CallCard 
+                date={(call as Call).state.startsAt?.toLocaleString()} 
+                link={(process.env.NEXT_PUBLIC_APP_URL || window.location.origin) + "/meeting/" + (call as Call).id} 
+                type={type} 
+                key={(call as Call).id} 
+                title={(call as Call).state.custom.name} 
+            />
+        })
+        : <p>{noCallsMessage}</p>}
         </div>
     )
 }
