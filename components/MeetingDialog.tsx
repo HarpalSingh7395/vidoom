@@ -7,16 +7,19 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog"
+import { ReactNode } from "react";
+import { CardContent } from "./ui/card";
 
 type MeetingDialogProps = {
-    isOpen?: boolean;
-    onClose?: (val: boolean) => void;
-    title?: string;
-    description?: string;
-    onActionClick?: () => void;
+  isOpen?: boolean;
+  onClose?: (val: boolean) => void;
+  title?: string;
+  description?: string;
+  onActionClick?: () => void;
+  children?: ReactNode;
 }
- 
-export function MeetingDialog({ title, description, isOpen, onClose, onActionClick}: MeetingDialogProps) {
+
+export function MeetingDialog({ title, description, isOpen, onClose, onActionClick, children }: MeetingDialogProps) {
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="sm:max-w-[425px]">
@@ -26,9 +29,7 @@ export function MeetingDialog({ title, description, isOpen, onClose, onActionCli
             {description || `Make changes to your profile here. Click save when you're done.`}
           </DialogDescription>
         </DialogHeader>
-        <DialogFooter>
-          <Button type="button" onClick={onActionClick}>Continue</Button>
-        </DialogFooter>
+        {children}
       </DialogContent>
     </Dialog>
   )

@@ -1,7 +1,10 @@
+import CallList from '@/components/CallList'
 import React from 'react'
 
 export default function page() {
   return (
-    <div>page</div>
+    <div>
+      <CallList type='recordings' />
+    </div>
   )
 }

@@ -3,6 +3,8 @@ import React from 'react'
 
 export default function Spinner() {
   return (
-    <Loader className='animate-spin' />
+    <div className='size-full flex justify-center items-center'>
+      <Loader className='animate-spin' />
+    </div>
   )
 }

@@ -1,6 +1,6 @@
 'use client'
 import { useGetCalls } from '@/hooks/useGetCalls'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Spinner from './Spinner';
 import { useRouter } from 'next/navigation';
 import { CallRecording } from '@stream-io/node-sdk';
@@ -12,7 +12,7 @@ type CallListProps = {
     type: 'ended' | 'upcoming' | 'recordings'
 }
 export default function CallList({ type }: CallListProps) {
-    const { endedCalls, upcomingCalls, isLoading } = useGetCalls();
+    const { endedCalls, upcomingCalls, callRecordings, isLoading } = useGetCalls();
     const [recordings, setRecordings] = useState<CallRecording[]>([]);
     const router = useRouter();
 
@@ -43,15 +43,33 @@ export default function CallList({ type }: CallListProps) {
         }
     }
 
+
+    useEffect(() => {
+        const fetchRecordings = async () => {
+            try {
+                const callData = await Promise.all(callRecordings.map(meeting => meeting.queryRecordings()))
+
+                const recordings = callData.filter(call => call.recordings.length > 0)
+                    .flatMap(call => call.recordings)
+                console.log({ recordings })
+                setRecordings(recordings)
+            } catch (error) {
+                console.log(error)
+            }
+        }
+
+        if (type == "recordings") fetchRecordings();
+    }, [type, callRecordings])
+
     const calls = getCalls();
     const noCallsMessage = getNoCallMessage();
 
     if (isLoading) return <Spinner />
     return (
         <div className='grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-4'>
-            {calls && calls.length > 0 ? calls.map((call: Call | CallRecording) => 
-            <CallCard key={(call as Call).id} title={(call as Call).state.custom.description} />
-            ):<p>{noCallsMessage}</p>}
+            {calls && calls.length > 0 ? calls.map((call: Call) =>
+                <CallCard date={(call as Call).state.startsAt?.toLocaleString()} link={(process.env.NEXT_PUBLIS_APP_URL || window.location.origin) + "/meeting/" + (call as Call).id} type={type} key={(call as Call).id} title={(call as Call).state.custom.name} />
+            ) : <p>{noCallsMessage}</p>}
         </div>
     )
 }
