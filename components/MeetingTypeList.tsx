@@ -99,7 +99,7 @@ export default function MeetingTypeList() {
                     Start
                 </Button>
                 <Button className='w-full' variant={'outline'} onClick={() => {
-                    navigator.clipboard.writeText((process.env.NEXT_PUBLIS_APP_URL || window.location.origin) + "/meeting/" + callDetails.id)
+                    navigator.clipboard.writeText((process.env.NEXT_PUBLIC_APP_URL || window.location.origin) + "/meeting/" + callDetails.id)
                     toast("Link has been copied.")
                 }}>
                     Copy Invitation Link
