@@ -77,6 +77,7 @@ export default function MeetingTypeList() {
             isOpen={meetingType == 'newMeeting'}
             onClose={() => setMeetingType(undefined)}
             title='Start Meeting'
+            description='Launch an immediate meeting session.'
         >
             <Button onClick={createMeeting}>Start Now</Button>
         </MeetingDialog>
@@ -84,6 +85,7 @@ export default function MeetingTypeList() {
             isOpen={meetingType == 'scheduleMeeting'}
             onClose={() => setMeetingType(undefined)}
             title='Schedule a meeting'
+            description='Plan and organize meetings for future dates and times.'
         >
             {callDetails?
             <div className='w-full flex justify-center gap-4'>
@@ -106,6 +108,7 @@ export default function MeetingTypeList() {
             isOpen={meetingType == 'joinMeeting'}
             onClose={() => setMeetingType(undefined)}
             title='Join a meeting'
+            description='Enter a meeting URL to join an existing session.'
         >
             <JoinMeetingForm onSubmit={async (values) => {
                 router.push(values.url);

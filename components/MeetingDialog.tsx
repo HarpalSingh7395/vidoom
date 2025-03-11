@@ -23,7 +23,7 @@ export function MeetingDialog({ title, description, isOpen, onClose, children }:
         <DialogHeader>
           <DialogTitle>{title || "Meeting Dialog"}</DialogTitle>
           <DialogDescription>
-            {description || `Make changes to your profile here. Click save when you're done.`}
+            {description}
           </DialogDescription>
         </DialogHeader>
         {children}
