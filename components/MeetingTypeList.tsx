@@ -65,6 +65,10 @@ export default function MeetingTypeList() {
         }
     }
 
+    const onCloseModal = () => {
+        setMeetingType(undefined)
+        setCallDetails(undefined)
+    }
 
     return (<>
         <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-10'>
@@ -75,7 +79,7 @@ export default function MeetingTypeList() {
         </div>
         <MeetingDialog
             isOpen={meetingType == 'newMeeting'}
-            onClose={() => setMeetingType(undefined)}
+            onClose={onCloseModal}
             title='Start Meeting'
             description='Launch an immediate meeting session.'
         >
@@ -83,7 +87,7 @@ export default function MeetingTypeList() {
         </MeetingDialog>
         <MeetingDialog
             isOpen={meetingType == 'scheduleMeeting'}
-            onClose={() => setMeetingType(undefined)}
+            onClose={onCloseModal}
             title='Schedule a meeting'
             description='Plan and organize meetings for future dates and times.'
         >
@@ -106,7 +110,7 @@ export default function MeetingTypeList() {
 
         <MeetingDialog
             isOpen={meetingType == 'joinMeeting'}
-            onClose={() => setMeetingType(undefined)}
+            onClose={onCloseModal}
             title='Join a meeting'
             description='Enter a meeting URL to join an existing session.'
         >
