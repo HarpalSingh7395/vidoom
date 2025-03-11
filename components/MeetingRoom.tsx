@@ -1,7 +1,7 @@
 import { CallControls, CallingState, CallParticipantsList, CallStatsButton, PaginatedGridLayout, SpeakerLayout, useCallStateHooks } from '@stream-io/video-react-sdk'
 import React, { useState } from 'react'
 import { Button, buttonVariants } from './ui/button';
-import { LayoutGrid, Users } from 'lucide-react';
+import { Hand, LayoutGrid, Network, Unplug, Users } from 'lucide-react';
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -26,6 +26,24 @@ export default function MeetingRoom() {
     const { useCallCallingState } = useCallStateHooks();
     const callingState = useCallCallingState();
 
+    if(callingState == CallingState.LEFT) {
+        return <div className='flex justify-center items-center h-screen flex-col gap-4'>
+            <Unplug className='w-10 h-10' />
+            <p className='text-2xl'>Call has been ended.</p>
+        </div>
+    }
+    if(callingState == CallingState.RECONNECTING) {
+        return <div className='flex justify-center items-center h-screen flex-col gap-4'>
+            <Network className='w-10 h-10' />
+            <p className='text-2xl'>Reconnecting call...</p>
+        </div>
+    }
+    if(callingState == CallingState.IDLE) {
+        return <div className='flex justify-center items-center h-screen flex-col gap-4'>
+            <Hand className='w-10 h-10' />
+            <p className='text-2xl'>Waiting for call to start...</p>
+        </div>
+    }
     if(callingState !== CallingState.JOINED) return <Spinner />
 
     const CallLayout = () => {
@@ -53,7 +71,7 @@ export default function MeetingRoom() {
                 })}>
                     <CallParticipantsList onClose={() => setIsParticipantsVisible(false)} />
                 </div>
-                <div className='fixed bottom-0 flex flex-wrap gap-3 items-center'>
+                <div className='fixed bottom-0 flex flex-wrap gap-3 items-center p-4 justify-center'>
                     <CallControls />
                     <DropdownMenu>
                         <DropdownMenuTrigger className={cn(buttonVariants({

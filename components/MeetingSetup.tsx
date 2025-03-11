@@ -38,10 +38,10 @@ export default function MeetingSetup({ onComplete }: { onComplete: (val: boolean
     }
     return (
         <div className='flex h-screen w-full flex-col items-center justify-center gap-4 text-white'>
-            <div className='flex gap-16 w-full max-w-5xl'>
+            <div className='flex gap-8 lg:gap-16 w-full max-w-5xl flex-col lg:flex-row'>
                 <div className='flex flex-col gap-3 justify-center items-center'>
                     <div className='relative'>
-                        <VideoPreview className='w-full flex-1' />
+                        <VideoPreview className='w-full flex-1 max-w-sm lg:max-w-auto' />
                         <p className='absolute top-4 left-4'>{user?.fullName}</p>
                     </div>
                     <div className='flex justify-center items-center gap-2'>

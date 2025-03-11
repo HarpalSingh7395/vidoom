@@ -12,7 +12,7 @@ export default function layout({ children }: { children: React.ReactNode }) {
                 <div>
                     <Sidebar />
                 </div>
-                <div className="flex-1 pt-24 px-20 h-screen w-full max-w-7xl mx-auto">
+                <div className="flex-1 pt-24 px-8 md:px-20 h-screen w-full max-w-7xl mx-auto max-h-screen overflow-y-auto pb-8">
                     <StreamClientProvider>
                         {children}
                     </StreamClientProvider>

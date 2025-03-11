@@ -19,7 +19,7 @@ type MeetingDialogProps = {
 export function MeetingDialog({ title, description, isOpen, onClose, children }: MeetingDialogProps) {
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-[425px]">
+      <DialogContent className="max-w-[350px] sm:max-w-[425px]">
         <DialogHeader>
           <DialogTitle>{title || "Meeting Dialog"}</DialogTitle>
           <DialogDescription>

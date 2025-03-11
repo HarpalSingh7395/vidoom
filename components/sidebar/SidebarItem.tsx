@@ -10,10 +10,14 @@ export type NavLink = {
     icon: React.ReactNode;
 };
 
-export default function NavItem({ item }: { item: NavLink }) {
+export default function NavItem({ item, ...props }: { item: NavLink } & React.HTMLAttributes<HTMLAnchorElement>) {
     const pathname = usePathname();
     const isActive = pathname.endsWith(item.link)
-    return (<Link href={item.link} className={cn('flex gap-2 items-center py-3 px-6 rounded-xl hover:bg-accent', {
-        "bg-primary text-foreground hover:bg-primary": isActive
-    })} >{item.icon}{item.name}</Link>)
+    return (<Link
+        href={item.link}
+        className={cn('flex gap-2 items-center py-3 px-6 rounded-xl hover:bg-accent', {
+            "bg-primary text-foreground hover:bg-primary": isActive
+        })}
+        {...props}
+    >{item.icon}{item.name}</Link>)
 }

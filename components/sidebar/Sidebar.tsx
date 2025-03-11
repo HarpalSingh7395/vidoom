@@ -2,7 +2,7 @@ import React from 'react'
 import { Video, LayoutDashboard, CalendarArrowDown, CalendarArrowUp } from "lucide-react";
 import NavItem, { NavLink } from './SidebarItem';
 
-const navLinks: NavLink[] = [
+export const navLinks: NavLink[] = [
     {
         name: "Dashboard",
         link: "/",

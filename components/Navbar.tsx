@@ -6,6 +6,7 @@ import {
     SignedOut,
     UserButton,
 } from '@clerk/nextjs'
+import MobileNavbar from './MobileNavbar'
 
 
 export default function Navbar() {
@@ -16,7 +17,10 @@ export default function Navbar() {
                 <SignInButton />
             </SignedOut>
             <SignedIn>
-                <UserButton />
+                <div className='flex items-center gap-4'>
+                    <UserButton />
+                    <MobileNavbar />
+                </div>
             </SignedIn>
         </div>
     )

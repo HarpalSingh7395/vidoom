@@ -43,7 +43,7 @@ export default function CallCard({ title, date, link, type }: CallCardProps) {
     return (
         <Card>
             <CardHeader>
-                <div className='flex gap-2 items-center'>{getIcon()}<CardTitle>{title || "Not title"}</CardTitle></div>
+                <div className='flex gap-2 items-center'>{getIcon()}<CardTitle>{title || "No title"}</CardTitle></div>
                 <CardDescription>{date}</CardDescription>
             </CardHeader>
             <CardFooter>
