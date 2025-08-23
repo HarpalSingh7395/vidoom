@@ -1,111 +1,83 @@
-# Vidoom: Seamless Video Meetings with Next.js, Tailwind CSS, Stream, & Clerk
+# Vidoom - Video Conferencing App
 
-Welcome to Vidoom, a modern and intuitive video conferencing application. Experience effortless communication with instant meetings, scheduled events, and recorded sessions, all built with cutting-edge technologies.
+Vidoom is a feature-rich video conferencing application built with Next.js, TypeScript, and powered by Stream's robust video SDK. It provides a seamless and interactive experience for virtual meetings, webinars, and online collaboration.
 
-## Features
+## ✨ Features
 
-* **Instant Meetings:** Start a video call instantly with a single click. No pre-planning required.
-* **Scheduled Meetings:** Plan your meetings in advance with easy date and time selection.
-* **Recording & Playback:** Capture and revisit important meetings with convenient recording and playback features.
-* **Secure User Authentication:** Robust user management and security provided by Clerk.
-* **High-Quality Real-time Communication:** Powered by Stream for crystal-clear video and audio.
-* **Responsive and Beautiful UI:** Designed with Tailwind CSS for a seamless experience on all devices.
+*   **Authentication:** Secure user sign-up and sign-in functionality using Clerk.
+*   **Create Meetings:** Instantly start a new meeting with a unique meeting ID.
+*   **Schedule Meetings:** Plan meetings for a future date and time.
+*   **Join Meetings:** Easily join existing meetings using the meeting link.
+*   **Meeting Recordings:** View and manage recordings of past meetings.
+*   **Personal Meeting Room:** A dedicated space for your personal meetings.
+*   **Real-time Communication:** High-quality video and audio powered by Stream.
+*   **Responsive Design:** A beautiful and intuitive user interface that works on all devices.
 
-## Technologies Used
+## 🚀 Getting Started
 
-* **Next.js:** React framework for efficient server-side rendering and optimal performance.
-* **Tailwind CSS:** Utility-first CSS framework for rapid and consistent UI development.
-* **Stream Video:** Real-time video and audio communication platform for reliable connections.
-* **Clerk:** User authentication and management for secure access.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-## Getting Started
+### Prerequisites
+
+Make sure you have the following installed on your machine:
+
+*   [Node.js](https://nodejs.org/en/) (v20 or later)
+*   [Yarn](https://yarnpkg.com/) or npm
+
+### Installation
 
 1.  **Clone the repository:**
-
     ```bash
-    git clone [your-repository-url]
+    git clone https://github.com/HarpalSingh7395/vidoom.git
     cd vidoom
     ```
 
 2.  **Install dependencies:**
-
     ```bash
-    npm install
-    # or
     yarn install
     # or
-    pnpm install
+    npm install
     ```
 
 3.  **Set up environment variables:**
 
-    * Create a `.env.local` file in the root directory.
-    * Add your Clerk and Stream API keys:
+    Create a `.env.local` file in the root of your project and add the following environment variables. You will need to get these credentials from [Clerk](https://clerk.com/) and [Stream](https://getstream.io/).
 
-        ```
-        NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key
-        CLERK_SECRET_KEY=your_clerk_secret_key
-        NEXT_PUBLIC_STREAM_API_KEY=your_stream_api_key
-        STREAM_API_SECRET=your_stream_api_secret
-        NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
-        NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
-        NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL=/
-        NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=/
-        ```
+    ```env
+    NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=
+    CLERK_SECRET_KEY=
 
-    * Replace the placeholder keys with your actual API keys obtained from the Clerk and Stream dashboards.
+    NEXT_PUBLIC_STREAM_API_KEY=
+    STREAM_SECRET_KEY=
 
-4.  **Run the development server:**
-
-    ```bash
-    npm run dev
-    # or
-    yarn dev
-    # or
-    pnpm dev
+    NEXT_PUBLIC_BASE_URL=http://localhost:3000
     ```
 
-5.  **Open your browser:**
+4.  **Run the development server:**
+    ```bash
+    yarn dev
+    # or
+    npm run dev
+    ```
 
-    * Navigate to `http://localhost:3000` to view the application.
+    Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+## 📜 Available Scripts
 
-## Clerk Setup
+In the project directory, you can run:
 
-1.  **Create a Clerk account:**
-    * Sign up at [Clerk.dev](https://clerk.dev/).
-2.  **Create an application:**
-    * Follow the instructions to create a new Clerk application.
-3.  **Obtain API keys:**
-    * Find your `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY` and `CLERK_SECRET_KEY` in your Clerk dashboard.
+*   `yarn dev`: Runs the app in the development mode.
+*   `yarn build`: Builds the app for production to the `.next` folder.
+*   `yarn start`: Starts a Next.js production server.
+*   `yarn lint`: Runs ESLint to find and fix problems in your code.
 
-## Stream Setup
+## 🛠️ Technologies Used
 
-1.  **Create a Stream account:**
-    * Sign up at [getstream.io](https://getstream.io/).
-2.  **Create a Video application:**
-    * Follow the instructions to create a new Stream Video application.
-3.  **Obtain API keys:**
-    * Find your `NEXT_PUBLIC_STREAM_API_KEY` and `STREAM_API_SECRET` in your Stream dashboard.
-
-## Deployment
-
-* Deploy your Next.js application to your preferred hosting platform (e.g., Vercel, Netlify, AWS Amplify).
-* Ensure your environment variables are correctly configured in your deployment environment.
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a pull request or open an issue.
-
-## License
-
-[MIT](LICENSE)
-
-## Acknowledgements
-
-* Next.js
-* Tailwind CSS
-* Stream Video
-* Clerk
-
-Enjoy your Vidoom meetings!
+*   **Framework:** [Next.js](https://nextjs.org/)
+*   **Language:** [TypeScript](https://www.typescriptlang.org/)
+*   **Authentication:** [Clerk](https://clerk.com/)
+*   **Video & Audio:** [Stream](https://getstream.io/video/docs/react/)
+*   **UI Components:** [Shadcn UI](https://ui.shadcn.com/)
+*   **Styling:** [Tailwind CSS](https://tailwindcss.com/)
+*   **Form Management:** [React Hook Form](https://react-hook-form.com/)
+*   **Schema Validation:** [Zod](https://zod.dev/)
